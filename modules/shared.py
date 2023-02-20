@@ -406,8 +406,7 @@ class Options:
             if key in self.data or key in self.data_labels:
                 assert not cmd_opts.freeze_settings, "changing settings is disabled"
 
-                info = opts.data_labels.get(key, None)
-                comp_args = info.component_args if info else None
+                comp_args = opts.data_labels[key].component_args
                 if isinstance(comp_args, dict) and comp_args.get('visible', True) is False:
                     raise RuntimeError(f"not possible to set {key} because it is restricted")
 
